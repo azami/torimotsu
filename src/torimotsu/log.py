@@ -1,5 +1,7 @@
+# -*- coding: utf-8 -*-
 import datetime
 import json
+import os.path
 from enum import Enum
 from collections import defaultdict
 
@@ -7,7 +9,7 @@ import fitbit
 
 from torimotsu import settings
 
-FITBIT_TOKEN = '../../.token.json'
+FITBIT_TOKEN = os.path.join(os.path.dirname(__file__), '../../.token.json')
 
 
 class MealType(Enum):

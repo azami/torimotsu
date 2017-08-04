@@ -1,8 +1,10 @@
+# -*- coding: utf-8 -*-
+import os.path
 import yaml
 from collections import namedtuple
 
 
-SETTINGS_FILE = '../../settings.yml'
+SETTINGS_FILE = os.path.join(os.path.dirname(__file__), '../../settings.yml')
 Fitbit = namedtuple('Fitbit', ['client_id', 'client_secret', 'system'])
 Slack = namedtuple('Slack', ['token', 'channel'])
 
