@@ -5,7 +5,7 @@ help:
 
 run: build
 	docker run --rm \
-	-it \
+	-i \
 	-v $(CURDIR):/torimotsu \
 	-e "PYTHONPATH=/torimotsu/src" \
 	torimotsu \
