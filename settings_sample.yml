@@ -1,0 +1,9 @@
+fitbit:
+  client_id: fitbit_client_id
+  client_secret: fitbit_client_secret
+  system: system language ex.)ja_JP
+
+# @see: http://slackapi.github.io/python-slackclient/auth.html
+slack:
+  token: slack_api_token
+  channel: slack_channel
