@@ -43,9 +43,9 @@ def _read_credentials():
         return json.load(f)
 
 
-def save_new_token(**kwargs):
+def save_new_token(response):
     with open(FITBIT_TOKEN, 'w') as f:
-        json.dump(kwargs, f)
+        json.dump(response, f)
 
 
 class Log(object):
