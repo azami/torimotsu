@@ -26,6 +26,7 @@ class MealType(Enum):
 
 class FoodLog(object):
     def __init__(self, log):
+        print(log)  # しばらくデバッグのために出す。
         self.summary = log['summary']
         self.goals = log['goals']
         logged = defaultdict(list)
