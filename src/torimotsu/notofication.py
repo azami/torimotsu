@@ -40,6 +40,7 @@ class Notifier(SlackClient):
                     **food['loggedFood']))
             lines.append('```')
         lines.append('')
+        lines.append(':yum: *{}* ㌔㌍が上限目標だよ。'.format(food_log.goals['calories']))
         lines.append(':yum: *{}* ㌔㌍摂取したよ。'.format(food_log.summary['calories']))
         diff = food_log.diff
         if diff > 0:
