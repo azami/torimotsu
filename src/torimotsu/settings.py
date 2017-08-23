@@ -15,4 +15,3 @@ def _load():
     return (Fitbit(**settings['fitbit']), Slack(**settings['slack']))
 
 (fitbit, slack) = _load()
-
