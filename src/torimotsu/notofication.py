@@ -30,7 +30,9 @@ class Notifier(SlackClient):
         lines = ['{}のたべものきろく。'.format(self.log.yesterday.strftime('%Y-%m-%d'))]
         food_log = self.log.fetch_foods()
         for (food_time, foods) in food_log.foods.items():
-            lines.append(':{}: *{}*'.format(MealTimeEmoji(food_time.value).name, food_time.name))
+            sum_calories = sum((food['loggedFood']['calories'] for food in foods))
+            lines.append(':{}: *{}* {}㌔㌍'.format(MealTimeEmoji(food_time.value).name,
+                                                food_time.name, sum_calories))
             lines.append('```')
             for food in foods:
                 lines.append('{calories:>4}㌔㌍ {name:25}: {amount}{unit_}'.format(
