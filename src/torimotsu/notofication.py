@@ -43,7 +43,7 @@ class Notifier(SlackClient):
         if diff > 0:
             lines.append(':innocent: *{}* ㌔㌍セーブしたよ。やったね。'.format(diff))
         else:
-            lines.append(':imp: *{}* ㌔㌍余分にたべてしまいました。罪深い。'.format(diff))
+            lines.append(':imp: *{}* ㌔㌍余分にたべてしまいました。罪深い。'.format(diff * -1))
         self.send_slack('\n'.join(lines))
 
     def send_slack(self, text):
