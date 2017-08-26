@@ -26,9 +26,8 @@ class MealType(Enum):
 
 class FoodLog(object):
     def __init__(self, log):
-        print(log)  # しばらくデバッグのために出す。
         self.summary = log['summary']
-        self.goals = log['goals']
+        self.goals = log.get('goals', {})
         logged = defaultdict(list)
         for food in log['foods']:
             logged[MealType(food['loggedFood']['mealTypeId'])].append(food)
@@ -36,7 +35,7 @@ class FoodLog(object):
 
     @property
     def diff(self):
-        return self.goals['calories'] - self.summary['calories']
+        return self.goals.get('calories', 0) - self.summary['calories']
 
 
 def _read_credentials():

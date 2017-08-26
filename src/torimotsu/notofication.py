@@ -40,13 +40,16 @@ class Notifier(SlackClient):
                     **food['loggedFood']))
             lines.append('```')
         lines.append('')
-        lines.append(':yum: *{}* ㌔㌍が上限目標だよ。'.format(food_log.goals['calories']))
         lines.append(':yum: *{}* ㌔㌍摂取したよ。'.format(food_log.summary['calories']))
-        diff = food_log.diff
-        if diff > 0:
-            lines.append(':innocent: *{}* ㌔㌍セーブしたよ。やったね。'.format(diff))
+        if food_log.goals:
+            lines.append(':yum: *{}* ㌔㌍が上限目標だよ。'.format(food_log.goals['calories']))
+            diff = food_log.diff
+            if diff > 0:
+                lines.append(':innocent: *{}* ㌔㌍セーブしたよ。やったね。'.format(diff))
+            else:
+                lines.append(':imp: *{}* ㌔㌍余分にたべてしまいました。罪深い。'.format(diff * -1))
         else:
-            lines.append(':imp: *{}* ㌔㌍余分にたべてしまいました。罪深い。'.format(diff * -1))
+            lines.append('目標㌍は取得できなかった。FitbitAPIバグっているのでは？？？')
         self.send_slack('\n'.join(lines))
 
     def send_slack(self, text):
